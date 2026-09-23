@@ -1,0 +1,56 @@
+<UserControl x:Class="PCDoctor.App.Views.NetworkView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:PCDoctor.App.Views.Controls">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="8,0,16,16">
+            <DockPanel LastChildFill="False">
+                <Button DockPanel.Dock="Right" Content="{DynamicResource Network.RunTests}" Style="{StaticResource PrimaryButton}" Command="{Binding RefreshCommand}"/>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Network.Title}" Style="{StaticResource PageTitle}"/>
+                    <TextBlock Text="{DynamicResource Network.Subtitle}" Style="{StaticResource PageSubtitle}"/>
+                </StackPanel>
+            </DockPanel>
+            <TextBlock Text="{Binding StatusMessage}" Style="{StaticResource MutedText}" Margin="0,12,0,0"/>
+            <Border Style="{StaticResource ErrorBanner}" Visibility="{Binding HasError, Converter={StaticResource BooleanToVisibility}}">
+                <TextBlock Text="{Binding ErrorMessage}"/>
+            </Border>
+            <ItemsControl ItemsSource="{Binding Warnings}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource BannerBorder}"><TextBlock Text="{Binding}"/></Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <ItemsControl ItemsSource="{Binding Cards}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:DetailCardView/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <ItemsControl ItemsSource="{Binding Tests}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource CardBorder}">
+                            <DockPanel>
+                                <Border DockPanel.Dock="Right"
+                                        Background="{DynamicResource InputBackgroundBrush}"
+                                        CornerRadius="6"
+                                        Padding="8,3">
+                                    <TextBlock Text="{Binding Succeeded, Converter={StaticResource BooleanToStatus}, ConverterParameter=test}"
+                                               FontWeight="SemiBold"/>
+                                </Border>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" Style="{StaticResource CardTitle}"/>
+                                    <TextBlock Text="{Binding Detail}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                                    <TextBlock Text="{Binding Source, StringFormat=Source: {0}}" Style="{StaticResource MutedText}" Margin="0,6,0,0" FontSize="11"/>
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

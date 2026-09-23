@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>PCDoctor.App</RootNamespace>
+    <AssemblyName>PCDoctor</AssemblyName>
+    <Product>Hytera Pc Doctor</Product>
+    <Company>Hytera</Company>
+    <Description>Windows diagnostic and troubleshooting desktop application.</Description>
+    <Version>1.0.0</Version>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationTitle>Hytera Pc Doctor</ApplicationTitle>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\logo.png" />
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PCDoctor.Core\PCDoctor.Core.csproj" />
+    <ProjectReference Include="..\PCDoctor.Diagnostics\PCDoctor.Diagnostics.csproj" />
+  </ItemGroup>
+</Project>

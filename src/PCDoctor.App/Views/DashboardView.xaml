@@ -1,0 +1,66 @@
+<UserControl x:Class="PCDoctor.App.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="8,0,16,16">
+            <DockPanel LastChildFill="False">
+                <Button DockPanel.Dock="Right"
+                        Content="{DynamicResource Common.Refresh}"
+                        Style="{StaticResource GhostButton}"
+                        Command="{Binding RefreshCommand}"/>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Dashboard.Title}" Style="{StaticResource PageTitle}"/>
+                    <TextBlock Text="{DynamicResource Dashboard.Subtitle}" Style="{StaticResource PageSubtitle}"/>
+                </StackPanel>
+            </DockPanel>
+
+            <TextBlock Text="{Binding StatusMessage}" Style="{StaticResource MutedText}" Margin="0,14,0,0"/>
+
+            <Border Style="{StaticResource ErrorBanner}"
+                    Visibility="{Binding HasError, Converter={StaticResource BooleanToVisibility}}">
+                <TextBlock Text="{Binding ErrorMessage}"/>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}" Margin="0,16,0,12">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Dashboard.Endpoint}" Style="{StaticResource SectionLabel}"/>
+                    <TextBlock Text="{Binding DeviceName}" FontSize="20" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding WindowsVersion}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                    <TextBlock Text="{Binding UptimeLabel}" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <ItemsControl ItemsSource="{Binding Warnings}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource BannerBorder}">
+                            <TextBlock Text="{Binding}"/>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ItemsControl ItemsSource="{Binding Tiles}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource CardBorder}" Margin="0,0,12,12">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource SectionLabel}"/>
+                                <TextBlock Text="{Binding Value}" Style="{StaticResource MetricValue}"/>
+                                <TextBlock Text="{Binding Subtitle}" Style="{StaticResource MutedText}" Margin="0,8,0,0"/>
+                                <ProgressBar Value="{Binding Progress, Mode=OneWay}"
+                                             Margin="0,12,0,0"
+                                             Visibility="{Binding ShowProgress, Converter={StaticResource BooleanToVisibility}}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

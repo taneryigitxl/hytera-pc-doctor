@@ -1,0 +1,34 @@
+<UserControl x:Class="PCDoctor.App.Views.Controls.FindingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource CardBorder}" Padding="16">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Width="8" CornerRadius="4" Background="{Binding Severity, Converter={StaticResource SeverityToBrush}}" Margin="0,0,14,0"/>
+            <StackPanel Grid.Column="1">
+                <DockPanel>
+                    <Border DockPanel.Dock="Right"
+                            Background="{DynamicResource InputBackgroundBrush}"
+                            CornerRadius="6"
+                            Padding="8,3"
+                            Margin="12,0,0,0">
+                        <TextBlock Text="{Binding Severity, Converter={StaticResource SeverityToText}}"
+                                   Foreground="{Binding Severity, Converter={StaticResource SeverityToBrush}}"
+                                   FontWeight="SemiBold"
+                                   FontSize="11"/>
+                    </Border>
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource CardTitle}"/>
+                </DockPanel>
+                <TextBlock Text="{Binding Summary}" Style="{StaticResource MutedText}" Margin="0,8,0,0"/>
+                <TextBlock Text="{Binding Evidence}" Margin="0,10,0,0"/>
+                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                    <TextBlock Text="{DynamicResource Common.Source}" Style="{StaticResource MutedText}" FontSize="11"/>
+                    <TextBlock Text="{Binding Source}" Style="{StaticResource MutedText}" FontSize="11"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

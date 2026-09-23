@@ -1,0 +1,51 @@
+<UserControl x:Class="PCDoctor.App.Views.StartupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="8,0,16,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <DockPanel LastChildFill="False">
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Content="{DynamicResource Startup.Enable}"
+                            Style="{StaticResource PrimaryButton}"
+                            Command="{Binding EnableCommand}"
+                            Margin="0,0,8,0"/>
+                    <Button Content="{DynamicResource Startup.Disable}"
+                            Style="{StaticResource GhostButton}"
+                            Command="{Binding DisableCommand}"
+                            Margin="0,0,8,0"/>
+                    <Button Content="{DynamicResource Common.Refresh}"
+                            Style="{StaticResource GhostButton}"
+                            Command="{Binding RefreshCommand}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Startup.Title}" Style="{StaticResource PageTitle}"/>
+                    <TextBlock Text="{DynamicResource Startup.Subtitle}" Style="{StaticResource PageSubtitle}"/>
+                </StackPanel>
+            </DockPanel>
+            <TextBlock Text="{Binding StatusMessage}" Style="{StaticResource MutedText}" Margin="0,12,0,8"/>
+            <Border Style="{StaticResource ErrorBanner}" Visibility="{Binding HasError, Converter={StaticResource BooleanToVisibility}}">
+                <TextBlock Text="{Binding ErrorMessage}"/>
+            </Border>
+        </StackPanel>
+        <Border Grid.Row="1" Style="{StaticResource CardBorder}" Padding="0">
+            <DataGrid ItemsSource="{Binding Entries}"
+                      SelectedItem="{Binding SelectedEntry, Mode=TwoWay}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionUnit="FullRow">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource Startup.Col.Name}" Binding="{Binding Name}" Width="180"/>
+                    <DataGridTextColumn Header="{DynamicResource Startup.Col.Status}" Binding="{Binding IsEnabled, Converter={StaticResource BooleanToStatus}}" Width="110"/>
+                    <DataGridTextColumn Header="{DynamicResource Startup.Col.User}" Binding="{Binding User}" Width="120"/>
+                    <DataGridTextColumn Header="{DynamicResource Startup.Col.Source}" Binding="{Binding Source}" Width="160"/>
+                    <DataGridTextColumn Header="{DynamicResource Startup.Col.Location}" Binding="{Binding Location}" Width="220"/>
+                    <DataGridTextColumn Header="{DynamicResource Startup.Col.Command}" Binding="{Binding Command}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</UserControl>

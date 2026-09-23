@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PCDoctor.Core/PCDoctor.Core.csproj" />
+    <Project Path="src/PCDoctor.Diagnostics/PCDoctor.Diagnostics.csproj" />
+    <Project Path="src/PCDoctor.App/PCDoctor.App.csproj" />
+    <Project Path="src/PCDoctor.Setup/PCDoctor.Setup.csproj" />
+  </Folder>
+</Solution>

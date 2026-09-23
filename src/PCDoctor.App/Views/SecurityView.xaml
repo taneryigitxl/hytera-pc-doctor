@@ -1,0 +1,78 @@
+<UserControl x:Class="PCDoctor.App.Views.SecurityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="8,0,16,16">
+            <DockPanel LastChildFill="False">
+                <Button DockPanel.Dock="Right" Content="{DynamicResource Common.Refresh}" Style="{StaticResource GhostButton}" Command="{Binding RefreshCommand}"/>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Security.Title}" Style="{StaticResource PageTitle}"/>
+                    <TextBlock Text="{DynamicResource Security.Subtitle}" Style="{StaticResource PageSubtitle}"/>
+                </StackPanel>
+            </DockPanel>
+            <TextBlock Text="{Binding StatusMessage}" Style="{StaticResource MutedText}" Margin="0,12,0,0"/>
+            <Border Style="{StaticResource ErrorBanner}" Visibility="{Binding HasError, Converter={StaticResource BooleanToVisibility}}">
+                <TextBlock Text="{Binding ErrorMessage}"/>
+            </Border>
+            <ItemsControl ItemsSource="{Binding Warnings}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource BannerBorder}"><TextBlock Text="{Binding}"/></Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Border Style="{StaticResource CardBorder}">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Security.Defender}" Style="{StaticResource CardTitle}"/>
+                    <TextBlock Text="{Binding Defender.Error}" Style="{StaticResource MutedText}" Margin="0,6,0,0"
+                               Visibility="{Binding Defender.Error, Converter={StaticResource NullOrEmptyToVisibility}}"/>
+                    <Grid Margin="0,12,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{DynamicResource Security.Antivirus}" Style="{StaticResource MutedText}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Defender.AntivirusEnabled, Converter={StaticResource BooleanToStatus}}"/>
+                        <TextBlock Grid.Row="1" Text="{DynamicResource Security.Realtime}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Defender.RealTimeProtectionEnabled, Converter={StaticResource BooleanToStatus}}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="2" Text="{DynamicResource Security.Antispyware}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Defender.AntispywareEnabled, Converter={StaticResource BooleanToStatus}}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="3" Text="{DynamicResource Security.Behavior}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Defender.BehaviorMonitorEnabled, Converter={StaticResource BooleanToStatus}}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="4" Text="{DynamicResource Security.Nis}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Defender.NisEnabled, Converter={StaticResource BooleanToStatus}}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="5" Text="{DynamicResource Security.SignatureVersion}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Defender.AntivirusSignatureVersion}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="6" Text="{DynamicResource Security.SignaturesUpdated}" Style="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding SignatureUpdatedText}" Margin="0,6,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource CardBorder}">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Security.Firewall}" Style="{StaticResource CardTitle}" Margin="0,0,0,12"/>
+                    <ItemsControl ItemsSource="{Binding FirewallProfiles}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="220"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Name}" Style="{StaticResource MutedText}"/>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="{Binding Enabled, Converter={StaticResource BooleanToStatus}}"/>
+                                        <TextBlock Text="{Binding Source}" Style="{StaticResource MutedText}" FontSize="11" Margin="0,3,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
