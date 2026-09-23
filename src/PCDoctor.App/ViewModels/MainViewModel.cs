@@ -21,7 +21,6 @@ public sealed class MainViewModel : ObservableObject
         StartupViewModel startup,
         SecurityViewModel security,
         OverlaySettingsViewModel overlay,
-        TroubleshooterViewModel troubleshooter,
         ReportsViewModel reports,
         SettingsViewModel settings,
         ILocalizationService localization)
@@ -36,7 +35,6 @@ public sealed class MainViewModel : ObservableObject
         Startup = startup;
         Security = security;
         Overlay = overlay;
-        Troubleshooter = troubleshooter;
         Reports = reports;
         Settings = settings;
 
@@ -51,7 +49,6 @@ public sealed class MainViewModel : ObservableObject
             new NavigationItem(AppSection.Startup, localization["Nav.Startup"], "\uE7E8"),
             new NavigationItem(AppSection.Security, localization["Nav.Security"], "\uE72E"),
             new NavigationItem(AppSection.Overlay, localization["Nav.Overlay"], "\uE9D9"),
-            new NavigationItem(AppSection.Troubleshooter, localization["Nav.Troubleshooter"], "\uE90F"),
             new NavigationItem(AppSection.Reports, localization["Nav.Reports"], "\uE9F9"),
             new NavigationItem(AppSection.Settings, localization["Nav.Settings"], "\uE713")
         ];
@@ -73,7 +70,6 @@ public sealed class MainViewModel : ObservableObject
     public StartupViewModel Startup { get; }
     public SecurityViewModel Security { get; }
     public OverlaySettingsViewModel Overlay { get; }
-    public TroubleshooterViewModel Troubleshooter { get; }
     public ReportsViewModel Reports { get; }
     public SettingsViewModel Settings { get; }
 
@@ -122,7 +118,6 @@ public sealed class MainViewModel : ObservableObject
         AppSection.Startup => "Nav.Startup",
         AppSection.Security => "Nav.Security",
         AppSection.Overlay => "Nav.Overlay",
-        AppSection.Troubleshooter => "Nav.Troubleshooter",
         AppSection.Reports => "Nav.Reports",
         AppSection.Settings => "Nav.Settings",
         _ => "Nav.Dashboard"
@@ -159,7 +154,6 @@ public sealed class MainViewModel : ObservableObject
         AppSection.Startup => Startup,
         AppSection.Security => Security,
         AppSection.Overlay => Overlay,
-        AppSection.Troubleshooter => Troubleshooter,
         AppSection.Reports => Reports,
         AppSection.Settings => Settings,
         _ => Dashboard

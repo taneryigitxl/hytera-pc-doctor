@@ -73,7 +73,7 @@
                     BorderThickness="0,1,0,0"
                     Padding="28,10">
                 <DockPanel>
-                    <TextBlock DockPanel.Dock="Right" Text="Tondy Pc Doctor 1.1" Style="{StaticResource MutedText}"/>
+                    <TextBlock DockPanel.Dock="Right" Text="Tondy Pc Doctor 1.2" Style="{StaticResource MutedText}"/>
                     <TextBlock Text="{Binding StatusText}" Style="{StaticResource MutedText}"/>
                 </DockPanel>
             </Border>

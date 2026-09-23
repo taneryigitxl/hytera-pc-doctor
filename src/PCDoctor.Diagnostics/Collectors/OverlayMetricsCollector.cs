@@ -29,11 +29,9 @@ public sealed class OverlayMetricsCollector : IOverlayMetricsService, IDisposabl
         var sensors = ReadSensors();
         var cpuUsage = await cpuTask.ConfigureAwait(false);
         var gpuUsage = sensors.GpuUsage ?? await ReadGpuEngineUsageAsync(cancellationToken).ConfigureAwait(false);
-        var cpuTemp = FirstValidTemp(
-            sensors.CpuTemp,
-            await ReadAcpiTempAsync(cancellationToken).ConfigureAwait(false),
-            await ReadThermalZoneAsync(cancellationToken).ConfigureAwait(false),
-            await ReadTemperatureProbeAsync(cancellationToken).ConfigureAwait(false));
+        var cpuTemp = sensors.CpuTemp is double sensorTemp && IsPlausibleTemp(sensorTemp)
+            ? sensorTemp
+            : await ReadCpuTempFallbackAsync(cancellationToken).ConfigureAwait(false);
 
         return new OverlaySnapshot
         {
@@ -156,6 +154,25 @@ public sealed class OverlayMetricsCollector : IOverlayMetricsService, IDisposabl
                 return default;
             }
         }
+    }
+
+    private async Task<double?> ReadCpuTempFallbackAsync(CancellationToken cancellationToken)
+    {
+        foreach (var reader in new Func<CancellationToken, Task<double?>>[]
+                 {
+                     ReadAcpiTempAsync,
+                     ReadThermalZoneAsync,
+                     ReadTemperatureProbeAsync
+                 })
+        {
+            var value = await reader(cancellationToken).ConfigureAwait(false);
+            if (value is double temp && IsPlausibleTemp(temp))
+            {
+                return temp;
+            }
+        }
+
+        return null;
     }
 
     private async Task<double?> ReadAcpiTempAsync(CancellationToken cancellationToken)

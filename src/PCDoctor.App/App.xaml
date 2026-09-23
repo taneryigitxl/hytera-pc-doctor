@@ -45,9 +45,6 @@
             <DataTemplate DataType="{x:Type vm:OverlaySettingsViewModel}">
                 <views:OverlaySettingsView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:TroubleshooterViewModel}">
-                <views:TroubleshooterView/>
-            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:ReportsViewModel}">
                 <views:ReportsView/>
             </DataTemplate>

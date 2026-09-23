@@ -44,7 +44,6 @@ public partial class App : Application
             new StartupViewModel(runtime.Startup, runtime.Logger, _localization),
             new SecurityViewModel(runtime.Security, runtime.Logger, _localization),
             overlaySettings,
-            new TroubleshooterViewModel(_localization),
             new ReportsViewModel(runtime.Reports, _localization),
             new SettingsViewModel(theme, overlaySettings, runtime.Privileges, runtime.Logger, _localization),
             _localization);

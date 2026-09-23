@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:documents="clr-namespace:System.Windows.Documents;assembly=PresentationFramework">
 
     <FontFamily x:Key="AppFont">Segoe UI Variable, Segoe UI</FontFamily>
     <FontFamily x:Key="IconFont">Segoe MDL2 Assets</FontFamily>
@@ -208,6 +209,7 @@
                                           IsHitTestVisible="False"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left"
+                                          documents:TextElement.Foreground="{TemplateBinding Foreground}"
                                           Content="{TemplateBinding SelectionBoxItem}"
                                           ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                           ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"/>
@@ -226,7 +228,7 @@
                                     Margin="0,4,0,0"
                                     Padding="4">
                                 <ScrollViewer>
-                                    <StackPanel IsItemsHost="True"/>
+                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
                                 </ScrollViewer>
                             </Border>
                         </Popup>

@@ -76,4 +76,6 @@ public sealed class LanguageOption
 
     public AppLanguage Language { get; }
     public string Name { get; }
+
+    public override string ToString() => Name;
 }

@@ -43,7 +43,6 @@ public enum AppSection
     Startup,
     Security,
     Overlay,
-    Troubleshooter,
     Reports,
     Settings
 }
