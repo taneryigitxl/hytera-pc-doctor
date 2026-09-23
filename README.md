@@ -8,8 +8,8 @@ Windows tanı ve sorun giderme uygulaması. IT teknisyenleri ve son kullanıcıl
 
 Kurulum dosyası GitHub Releases üzerinden yayınlanır. Kaynak kod bu depodadır; `setup.exe` git geçmişine gömülmez.
 
-1. [Latest release](../../releases/latest) sayfasını aç
-2. **HyteraPcDoctor-Setup.exe** dosyasını indir
+1. [Latest release](https://github.com/taneryigitxl/hytera-pc-doctor/releases/latest) sayfasını aç
+2. **[HyteraPcDoctor-Setup.exe](https://github.com/taneryigitxl/hytera-pc-doctor/releases/download/v1.0.0/HyteraPcDoctor-Setup.exe)** dosyasını indir
 3. Kur’a bas — uygulama masaüstüne `Hytera Pc Doctor.exe` olarak kopyalanır
 
 Windows SmartScreen imzasız exe’lerde uyarı gösterebilir. Kaynak bu depo ise ve hash eşleşiyorsa dosya bizim paketimizdir.
