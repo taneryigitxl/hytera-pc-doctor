@@ -14,6 +14,9 @@ public partial class App : Application
     private IAppLogger? _logger;
     private LocalizationService? _localization;
     private IOverlayController? _overlay;
+    private TrayIconService? _tray;
+    private MainWindow? _mainWindow;
+    private bool _exiting;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -45,18 +48,69 @@ public partial class App : Application
             new SecurityViewModel(runtime.Security, runtime.Logger, _localization),
             overlaySettings,
             new ReportsViewModel(runtime.Reports, _localization),
-            new SettingsViewModel(theme, overlaySettings, runtime.Privileges, runtime.Logger, _localization),
+            new SettingsViewModel(theme, runtime.Privileges, runtime.Logger, _localization),
             _localization);
 
-        var window = new MainWindow
-        {
-            DataContext = main
-        };
-        window.Closed += (_, _) => _overlay.Dispose();
-        window.Show();
-        _overlay.Attach(window);
+        _mainWindow = new MainWindow { DataContext = main };
+        _mainWindow.Closing += OnMainWindowClosing;
+        _tray = new TrayIconService(_localization, RestoreMainWindow, ExitApplication);
+        _mainWindow.Show();
         _overlay.Apply();
         base.OnStartup(e);
+    }
+
+    protected override void OnExit(ExitEventArgs e)
+    {
+        _overlay?.Dispose();
+        _tray?.Dispose();
+        base.OnExit(e);
+    }
+
+    private void OnMainWindowClosing(object? sender, System.ComponentModel.CancelEventArgs e)
+    {
+        if (_exiting)
+        {
+            return;
+        }
+
+        e.Cancel = true;
+        HideToTray();
+    }
+
+    private void HideToTray()
+    {
+        if (_mainWindow is null)
+        {
+            return;
+        }
+
+        _mainWindow.ShowInTaskbar = false;
+        _mainWindow.Hide();
+        _overlay?.Apply();
+    }
+
+    private void RestoreMainWindow()
+    {
+        if (_mainWindow is null)
+        {
+            return;
+        }
+
+        _mainWindow.ShowInTaskbar = true;
+        _mainWindow.Show();
+        _mainWindow.WindowState = WindowState.Normal;
+        _mainWindow.Activate();
+    }
+
+    private void ExitApplication()
+    {
+        _exiting = true;
+        _overlay?.Dispose();
+        _overlay = null;
+        _tray?.Dispose();
+        _tray = null;
+        _mainWindow?.Close();
+        Shutdown();
     }
 
     private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

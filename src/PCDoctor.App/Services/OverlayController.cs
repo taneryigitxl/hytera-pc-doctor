@@ -16,7 +16,6 @@ public sealed class OverlayController : IOverlayController
     private readonly OverlayViewModel _viewModel;
     private readonly DispatcherTimer _timer;
     private OverlayWindow? _window;
-    private Window? _owner;
     private bool _busy;
 
     public OverlayController(
@@ -37,7 +36,6 @@ public sealed class OverlayController : IOverlayController
 
     public void Attach(object ownerWindow)
     {
-        _owner = ownerWindow as Window;
     }
 
     public void Apply()
@@ -50,12 +48,7 @@ public sealed class OverlayController : IOverlayController
             return;
         }
 
-        _window ??= new OverlayWindow { DataContext = _viewModel, Owner = _owner, ShowInTaskbar = false };
-        if (_owner?.Icon is not null)
-        {
-            _window.Icon = _owner.Icon;
-        }
-
+        _window ??= new OverlayWindow { DataContext = _viewModel, ShowInTaskbar = false };
         _window.Corner = options.Corner;
         if (!_window.IsVisible)
         {
