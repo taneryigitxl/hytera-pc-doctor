@@ -9,12 +9,12 @@ Windows tanı ve sorun giderme uygulaması. IT teknisyenleri ve son kullanıcıl
 Kurulum dosyası GitHub Releases üzerinden yayınlanır. Kaynak kod bu depodadır; `setup.exe` git geçmişine gömülmez.
 
 1. [Latest release](https://github.com/taneryigitxl/tondy-pc-doctor/releases/latest) sayfasını aç
-2. **[TondyPcDoctor-Setup.exe](https://github.com/taneryigitxl/tondy-pc-doctor/releases/download/v1.3.0/TondyPcDoctor-Setup.exe)** dosyasını indir
+2. **[TondyPcDoctor-Setup.exe](https://github.com/taneryigitxl/tondy-pc-doctor/releases/download/v1.3.1/TondyPcDoctor-Setup.exe)** dosyasını indir
 3. Kur’a bas — uygulama masaüstüne `Tondy Pc Doctor.exe` olarak kopyalanır
 
 Windows SmartScreen imzasız exe’lerde uyarı gösterebilir. Kaynak bu depo ise ve hash eşleşiyorsa dosya bizim paketimizdir.
 
-SHA256 (v1.3.0): `CFDF920CD0335A89D7973DADF949AE062C13907BFFA2C390336FCBB88CB7B35B`
+SHA256 (v1.3.1): `E2FADF7D9A84F14A386B39A537BE72C5AC95BCD08977CED609089309C9603EEA`
 
 ## Features
 
