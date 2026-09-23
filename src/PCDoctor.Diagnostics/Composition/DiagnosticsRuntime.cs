@@ -20,6 +20,7 @@ public sealed class DiagnosticsRuntime
     public ISecurityService Security { get; }
     public IScanEngine ScanEngine { get; }
     public IRepairService Repair { get; }
+    public IOverlayMetricsService OverlayMetrics { get; }
     public IPrivilegeService Privileges { get; }
     public IReportStore Reports { get; }
 
@@ -33,6 +34,7 @@ public sealed class DiagnosticsRuntime
         ISecurityService security,
         IScanEngine scanEngine,
         IRepairService repair,
+        IOverlayMetricsService overlayMetrics,
         IPrivilegeService privileges,
         IReportStore reports)
     {
@@ -45,6 +47,7 @@ public sealed class DiagnosticsRuntime
         Security = security;
         ScanEngine = scanEngine;
         Repair = repair;
+        OverlayMetrics = overlayMetrics;
         Privileges = privileges;
         Reports = reports;
     }
@@ -77,6 +80,7 @@ public sealed class DiagnosticsRuntime
 
         var engine = new ScanEngine(modules, logger, systemInfo, localization);
         var repair = new RepairService(startup, logger, localization);
-        return new DiagnosticsRuntime(logger, systemInfo, hardware, network, eventLogs, startup, security, engine, repair, privileges, reports);
+        var overlay = new OverlayMetricsCollector(logger, wmi);
+        return new DiagnosticsRuntime(logger, systemInfo, hardware, network, eventLogs, startup, security, engine, repair, overlay, privileges, reports);
     }
 }

@@ -245,6 +245,11 @@
         <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
     </Style>
 
+    <Style TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        <Setter Property="Margin" Value="0,0,12,8"/>
+    </Style>
+
     <Style TargetType="ProgressBar">
         <Setter Property="Height" Value="8"/>
         <Setter Property="Minimum" Value="0"/>

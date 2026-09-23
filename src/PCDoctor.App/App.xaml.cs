@@ -2,6 +2,7 @@
 using System.Windows.Threading;
 using PCDoctor.App.Services;
 using PCDoctor.App.ViewModels;
+using PCDoctor.Core.Interfaces;
 using PCDoctor.Core.Logging;
 using PCDoctor.Diagnostics.Composition;
 using PCDoctor.Diagnostics.Logging;
@@ -12,6 +13,7 @@ public partial class App : Application
 {
     private IAppLogger? _logger;
     private LocalizationService? _localization;
+    private IOverlayController? _overlay;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -29,6 +31,8 @@ public partial class App : Application
 
         var theme = new ThemeService(settings);
         theme.Apply(settings.Theme);
+        _overlay = new OverlayController(settings, runtime.OverlayMetrics, _localization, runtime.Logger);
+        var overlaySettings = new OverlaySettingsViewModel(settings, _overlay);
 
         var main = new MainViewModel(
             new DashboardViewModel(runtime.SystemInfo, runtime.Logger, _localization),
@@ -39,16 +43,20 @@ public partial class App : Application
             new EventLogsViewModel(runtime.EventLogs, runtime.Logger, _localization),
             new StartupViewModel(runtime.Startup, runtime.Logger, _localization),
             new SecurityViewModel(runtime.Security, runtime.Logger, _localization),
+            overlaySettings,
             new TroubleshooterViewModel(_localization),
             new ReportsViewModel(runtime.Reports, _localization),
-            new SettingsViewModel(theme, runtime.Privileges, runtime.Logger, _localization),
+            new SettingsViewModel(theme, overlaySettings, runtime.Privileges, runtime.Logger, _localization),
             _localization);
 
         var window = new MainWindow
         {
             DataContext = main
         };
+        window.Closed += (_, _) => _overlay.Dispose();
         window.Show();
+        _overlay.Attach(window);
+        _overlay.Apply();
         base.OnStartup(e);
     }
 

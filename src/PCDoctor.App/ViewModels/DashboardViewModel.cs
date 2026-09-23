@@ -137,7 +137,7 @@ public sealed class DashboardViewModel : LoadableViewModel
         Tiles.Add(new MetricTile
         {
             Title = Loc["Dashboard.Memory"],
-            Value = ByteFormatter.Percentage(snapshot.RamUsagePercent),
+            Value = $"{ByteFormatter.Percentage(snapshot.RamUsagePercent)}  {ByteFormatter.FromBytes(snapshot.RamUsedBytes)}",
             Subtitle = Loc.Get(
                 "Dashboard.MemorySubtitle",
                 ByteFormatter.FromBytes(snapshot.RamUsedBytes),

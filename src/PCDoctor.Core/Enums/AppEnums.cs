@@ -42,6 +42,7 @@ public enum AppSection
     EventLogs,
     Startup,
     Security,
+    Overlay,
     Troubleshooter,
     Reports,
     Settings
@@ -53,4 +54,12 @@ public enum LogLevel
     Information,
     Warning,
     Error
+}
+
+public enum OverlayCorner
+{
+    TopLeft,
+    TopRight,
+    BottomLeft,
+    BottomRight
 }

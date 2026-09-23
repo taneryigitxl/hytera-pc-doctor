@@ -9,12 +9,12 @@ Windows tanı ve sorun giderme uygulaması. IT teknisyenleri ve son kullanıcıl
 Kurulum dosyası GitHub Releases üzerinden yayınlanır. Kaynak kod bu depodadır; `setup.exe` git geçmişine gömülmez.
 
 1. [Latest release](https://github.com/taneryigitxl/hytera-pc-doctor/releases/latest) sayfasını aç
-2. **[HyteraPcDoctor-Setup.exe](https://github.com/taneryigitxl/hytera-pc-doctor/releases/download/v1.0.0/HyteraPcDoctor-Setup.exe)** dosyasını indir
+2. **[HyteraPcDoctor-Setup.exe](https://github.com/taneryigitxl/hytera-pc-doctor/releases/download/v1.1.0/HyteraPcDoctor-Setup.exe)** dosyasını indir
 3. Kur’a bas — uygulama masaüstüne `Hytera Pc Doctor.exe` olarak kopyalanır
 
 Windows SmartScreen imzasız exe’lerde uyarı gösterebilir. Kaynak bu depo ise ve hash eşleşiyorsa dosya bizim paketimizdir.
 
-SHA256 (v1.0.0): `C1218292668558FB9A4B1540A1F7F4434BF6204211ECCC7129707D7DA9185CB4`
+SHA256 (v1.1.0): `B42C17118C9E31004D986FE1B8D4B22770676919BFA2161579B8F21737E41341`
 
 ## Features
 
@@ -26,7 +26,8 @@ SHA256 (v1.0.0): `C1218292668558FB9A4B1540A1F7F4434BF6204211ECCC7129707D7DA9185C
 - **Olay günlükleri** — System / Application Kritik ve Hata kayıtları (TR/EN düzey adları)
 - **Başlangıç** — Run anahtarları ve başlangıç klasörü; etkinleştir / devre dışı bırak
 - **Güvenlik** — Windows Defender ve Güvenlik Duvarı profilleri
-- **Ayarlar** — koyu/açık tema, Türkçe/İngilizce
+- **Gösterge** — Afterburner tarzı köşe overlay; aç/kapa ve CPU/GPU/RAM/disk ölçümlerini tek tek seç
+- **Ayarlar** — koyu/açık tema, Türkçe/İngilizce, overlay kısayolu
 
 Bulgular **Tamam / Uyarı / Kritik** olarak ölçülen değerlerden sınıflanır.
 

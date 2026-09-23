@@ -1,5 +1,6 @@
 using PCDoctor.Core.Enums;
 using PCDoctor.Core.Models.Diagnostics;
+using PCDoctor.Core.Models.Overlay;
 
 namespace PCDoctor.Core.Interfaces;
 
@@ -27,6 +28,20 @@ public interface ISettingsStore
 {
     AppTheme Theme { get; set; }
     AppLanguage Language { get; set; }
+    OverlayOptions Overlay { get; }
+    void Save();
+}
+
+public interface IOverlayMetricsService
+{
+    Task<OverlaySnapshot> SampleAsync(CancellationToken cancellationToken = default);
+}
+
+public interface IOverlayController
+{
+    void Attach(object ownerWindow);
+    void Apply();
+    void Dispose();
 }
 
 public interface ILocalizationService

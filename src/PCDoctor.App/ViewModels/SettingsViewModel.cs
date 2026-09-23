@@ -15,9 +15,15 @@ public sealed class SettingsViewModel : ObservableObject
     private bool _isDarkTheme;
     private LanguageOption _selectedLanguage;
 
-    public SettingsViewModel(IThemeService theme, IPrivilegeService privileges, IAppLogger logger, ILocalizationService localization)
+    public SettingsViewModel(
+        IThemeService theme,
+        OverlaySettingsViewModel overlay,
+        IPrivilegeService privileges,
+        IAppLogger logger,
+        ILocalizationService localization)
     {
         _theme = theme;
+        Overlay = overlay;
         _privileges = privileges;
         _loc = localization;
         _isDarkTheme = theme.CurrentTheme == AppTheme.Dark;
@@ -34,10 +40,11 @@ public sealed class SettingsViewModel : ObservableObject
         _loc.LanguageChanged += (_, _) => NotifyLocalized();
     }
 
+    public OverlaySettingsViewModel Overlay { get; }
     public RelayCommand OpenLogsCommand { get; }
     public RelayCommand ToggleThemeCommand { get; }
     public IReadOnlyList<LanguageOption> Languages { get; }
-    public string Version { get; } = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "1.0.0";
+    public string Version { get; } = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "1.1.0";
     public string UserName => _privileges.CurrentUser;
     public string Elevation => _privileges.IsAdministrator ? _loc["Settings.Administrator"] : _loc["Settings.StandardUser"];
     public string LogDirectory { get; }

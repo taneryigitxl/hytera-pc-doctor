@@ -3,6 +3,7 @@ using System.Text.Json;
 using PCDoctor.Core.Enums;
 using PCDoctor.Core.Interfaces;
 using PCDoctor.Core.Logging;
+using PCDoctor.Core.Models.Overlay;
 
 namespace PCDoctor.App.Services;
 
@@ -41,26 +42,9 @@ public sealed class JsonSettingsStore : ISettingsStore
         }
     }
 
-    private void Load()
-    {
-        try
-        {
-            if (!File.Exists(_path))
-            {
-                return;
-            }
+    public OverlayOptions Overlay => _model.Overlay;
 
-            var json = File.ReadAllText(_path);
-            _model = JsonSerializer.Deserialize<SettingsModel>(json) ?? new SettingsModel();
-        }
-        catch (Exception ex)
-        {
-            _logger.Warn("Could not load settings.json. Default theme and language will be used.", ex);
-            _model = new SettingsModel();
-        }
-    }
-
-    private void Save()
+    public void Save()
     {
         try
         {
@@ -72,9 +56,30 @@ public sealed class JsonSettingsStore : ISettingsStore
         }
     }
 
+    private void Load()
+    {
+        try
+        {
+            if (!File.Exists(_path))
+            {
+                return;
+            }
+
+            var json = File.ReadAllText(_path);
+            _model = JsonSerializer.Deserialize<SettingsModel>(json) ?? new SettingsModel();
+            _model.Overlay ??= new OverlayOptions();
+        }
+        catch (Exception ex)
+        {
+            _logger.Warn("Could not load settings.json. Default theme and language will be used.", ex);
+            _model = new SettingsModel();
+        }
+    }
+
     private sealed class SettingsModel
     {
         public AppTheme Theme { get; set; } = AppTheme.Dark;
         public AppLanguage Language { get; set; } = AppLanguage.Turkish;
+        public OverlayOptions Overlay { get; set; } = new();
     }
 }

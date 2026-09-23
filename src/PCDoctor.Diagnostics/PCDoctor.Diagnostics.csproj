@@ -13,5 +13,6 @@
   <ItemGroup>
     <PackageReference Include="System.Management" Version="10.0.0" />
     <PackageReference Include="System.Diagnostics.EventLog" Version="10.0.0" />
+    <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.4" />
   </ItemGroup>
 </Project>
