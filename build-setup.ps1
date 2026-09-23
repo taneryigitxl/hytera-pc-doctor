@@ -8,7 +8,7 @@ $distDir = Join-Path $root "dist"
 New-Item -ItemType Directory -Force -Path $payloadDir | Out-Null
 New-Item -ItemType Directory -Force -Path $distDir | Out-Null
 
-Write-Host "Publishing Hytera Pc Doctor (single-file)..."
+Write-Host "Publishing Tondy Pc Doctor (single-file)..."
 dotnet publish $appProject -c Release -r win-x64 --self-contained true `
     -p:PublishSingleFile=true `
     -p:IncludeNativeLibrariesForSelfExtract=true `
@@ -26,6 +26,6 @@ dotnet publish $setupProject -c Release -r win-x64 --self-contained true `
     -o $distDir
 if ($LASTEXITCODE -ne 0) { throw "Setup publish failed." }
 
-$setup = Join-Path $distDir "HyteraPcDoctor-Setup.exe"
+$setup = Join-Path $distDir "TondyPcDoctor-Setup.exe"
 if (-not (Test-Path $setup)) { throw "Setup exe was not created." }
 Write-Host "Setup ready: $setup"

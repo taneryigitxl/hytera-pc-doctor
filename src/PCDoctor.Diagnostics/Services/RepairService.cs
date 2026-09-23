@@ -10,7 +10,7 @@ public sealed class RepairService : IRepairService
 {
     private static readonly string[] ProtectedStartupTokens =
     [
-        "microsoft", "windows", "securityhealth", "hytera", "pcdoctor",
+        "microsoft", "windows", "securityhealth", "tondy", "pcdoctor",
         "intel", "nvidia", "amd", "realtek"
     ];
 

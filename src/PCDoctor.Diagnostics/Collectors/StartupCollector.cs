@@ -8,8 +8,8 @@ namespace PCDoctor.Diagnostics.Collectors;
 
 public sealed class StartupCollector : IStartupService
 {
-    private const string DisabledSuffix = ".hytera-disabled";
-    private const string DisabledRoot = @"Software\Hytera\PcDoctor\DisabledStartup";
+    private const string DisabledSuffix = ".tondy-disabled";
+    private const string DisabledRoot = @"Software\Tondy\PcDoctor\DisabledStartup";
     private readonly IAppLogger _logger;
     private readonly WmiClient _wmi;
 
@@ -100,7 +100,7 @@ public sealed class StartupCollector : IStartupService
         {
             if (!entry.CanToggle)
             {
-                return OperationResult<bool>.Fail("This startup entry cannot be toggled from Hytera Pc Doctor.");
+                return OperationResult<bool>.Fail("This startup entry cannot be toggled from Tondy Pc Doctor.");
             }
 
             if (entry.Kind == StartupEntryKind.Registry)
@@ -113,7 +113,7 @@ public sealed class StartupCollector : IStartupService
             }
             else
             {
-                return OperationResult<bool>.Fail("This startup entry cannot be toggled from Hytera Pc Doctor.");
+                return OperationResult<bool>.Fail("This startup entry cannot be toggled from Tondy Pc Doctor.");
             }
 
             return OperationResult<bool>.Ok(true);

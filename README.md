@@ -1,4 +1,4 @@
-# Hytera Pc Doctor
+# Tondy Pc Doctor
 
 Windows tanı ve sorun giderme uygulaması. IT teknisyenleri ve son kullanıcılar için canlı sistem verisini okur; uydurma sağlık puanı üretmez.
 
@@ -8,13 +8,13 @@ Windows tanı ve sorun giderme uygulaması. IT teknisyenleri ve son kullanıcıl
 
 Kurulum dosyası GitHub Releases üzerinden yayınlanır. Kaynak kod bu depodadır; `setup.exe` git geçmişine gömülmez.
 
-1. [Latest release](https://github.com/taneryigitxl/hytera-pc-doctor/releases/latest) sayfasını aç
-2. **[HyteraPcDoctor-Setup.exe](https://github.com/taneryigitxl/hytera-pc-doctor/releases/download/v1.1.0/HyteraPcDoctor-Setup.exe)** dosyasını indir
-3. Kur’a bas — uygulama masaüstüne `Hytera Pc Doctor.exe` olarak kopyalanır
+1. [Latest release](https://github.com/taneryigitxl/tondy-pc-doctor/releases/latest) sayfasını aç
+2. **[TondyPcDoctor-Setup.exe](https://github.com/taneryigitxl/tondy-pc-doctor/releases/download/v1.1.1/TondyPcDoctor-Setup.exe)** dosyasını indir
+3. Kur’a bas — uygulama masaüstüne `Tondy Pc Doctor.exe` olarak kopyalanır
 
 Windows SmartScreen imzasız exe’lerde uyarı gösterebilir. Kaynak bu depo ise ve hash eşleşiyorsa dosya bizim paketimizdir.
 
-SHA256 (v1.1.0): `B42C17118C9E31004D986FE1B8D4B22770676919BFA2161579B8F21737E41341`
+SHA256 (v1.1.1): `1509E2BE9ADFCC330D0015E679CC80442D2221F3832928042AE11A1D8F444902`
 
 ## Features
 
@@ -69,7 +69,7 @@ Setup paketi:
 .\build-setup.ps1
 ```
 
-Çıktı: `dist/HyteraPcDoctor-Setup.exe`
+Çıktı: `dist/TondyPcDoctor-Setup.exe`
 
 ## Notes
 

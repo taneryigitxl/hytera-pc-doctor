@@ -1,7 +1,7 @@
 <Window x:Class="PCDoctor.Setup.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Hytera Pc Doctor Kurulum"
+        Title="Tondy Pc Doctor Kurulum"
         Width="520"
         Height="360"
         WindowStartupLocation="CenterScreen"
@@ -20,13 +20,13 @@
                    Margin="0,0,12,0"
                    VerticalAlignment="Center"/>
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Hytera Pc Doctor" FontSize="20" FontWeight="SemiBold" Foreground="#3D8BFF"/>
+                <TextBlock Text="Tondy Pc Doctor" FontSize="20" FontWeight="SemiBold" Foreground="#3D8BFF"/>
                 <TextBlock Text="Kurulum" Foreground="#8E9BB3" Margin="0,4,0,0"/>
             </StackPanel>
         </StackPanel>
         <TextBlock Grid.Row="1"
                    x:Name="StatusText"
-                   Text="Kurulum, uygulamayı masaüstüne kopyalar. Sonra kısayol yerine doğrudan Hytera Pc Doctor.exe ile açabilirsiniz."
+                   Text="Kurulum, uygulamayı masaüstüne kopyalar. Sonra kısayol yerine doğrudan Tondy Pc Doctor.exe ile açabilirsiniz."
                    Foreground="#F3F6FB"
                    TextWrapping="Wrap"
                    VerticalAlignment="Center"/>

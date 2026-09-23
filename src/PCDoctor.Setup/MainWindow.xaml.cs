@@ -23,7 +23,7 @@ public partial class MainWindow : Window
         try
         {
             var desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            var destination = Path.Combine(desktop, "Hytera Pc Doctor.exe");
+            var destination = Path.Combine(desktop, "Tondy Pc Doctor.exe");
 
             await using var source = Assembly.GetExecutingAssembly().GetManifestResourceStream("payload.exe");
             if (source is null)
@@ -36,7 +36,7 @@ public partial class MainWindow : Window
             await source.CopyToAsync(target).ConfigureAwait(true);
             Progress.Value = 100;
 
-            StatusText.Text = "Kurulum tamam. Masaüstünde \"Hytera Pc Doctor.exe\" hazır.";
+            StatusText.Text = "Kurulum tamam. Masaüstünde \"Tondy Pc Doctor.exe\" hazır.";
             InstallButton.Content = "Çalıştır";
             InstallButton.IsEnabled = true;
             InstallButton.Click -= InstallButton_OnClick;

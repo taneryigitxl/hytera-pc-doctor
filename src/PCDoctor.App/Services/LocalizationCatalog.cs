@@ -9,8 +9,8 @@ internal static class LocalizationCatalog
 
     private static readonly Dictionary<string, string> Turkish = new(StringComparer.Ordinal)
     {
-        ["App.Name"] = "Hytera Pc Doctor",
-        ["Shell.Brand"] = "HYTERA PC DOCTOR",
+        ["App.Name"] = "Tondy Pc Doctor",
+        ["Shell.Brand"] = "TONDY PC DOCTOR",
         ["Shell.Subtitle"] = "Tanı konsolu",
         ["Shell.ReadOnly"] = "Yerel tanılama",
         ["Nav.Dashboard"] = "Özet",
@@ -438,8 +438,8 @@ internal static class LocalizationCatalog
 
     private static readonly Dictionary<string, string> English = new(StringComparer.Ordinal)
     {
-        ["App.Name"] = "Hytera Pc Doctor",
-        ["Shell.Brand"] = "HYTERA PC DOCTOR",
+        ["App.Name"] = "Tondy Pc Doctor",
+        ["Shell.Brand"] = "TONDY PC DOCTOR",
         ["Shell.Subtitle"] = "Diagnostic console",
         ["Shell.ReadOnly"] = "Local diagnostics",
         ["Nav.Dashboard"] = "Dashboard",

@@ -27,7 +27,7 @@ public partial class App : Application
 
         var runtime = DiagnosticsRuntime.Create(_localization, logger);
         _logger = runtime.Logger;
-        _logger.Info("Hytera Pc Doctor starting.");
+        _logger.Info("Tondy Pc Doctor starting.");
 
         var theme = new ThemeService(settings);
         theme.Apply(settings.Theme);
@@ -66,7 +66,7 @@ public partial class App : Application
         var prefix = _localization?["App.Unhandled"] ?? "An unexpected error occurred.";
         MessageBox.Show(
             $"{prefix}{Environment.NewLine}{e.Exception.Message}",
-            "Hytera Pc Doctor",
+            "Tondy Pc Doctor",
             MessageBoxButton.OK,
             MessageBoxImage.Error);
         e.Handled = true;
