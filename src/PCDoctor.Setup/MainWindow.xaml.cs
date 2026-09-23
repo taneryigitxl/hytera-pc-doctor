@@ -1,7 +1,7 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Media;
+using System.Windows.Input;
 
 namespace PCDoctor.Setup;
 
@@ -10,8 +10,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        StyleButton(InstallButton, "#3D8BFF", Colors.White);
-        StyleButton(CloseButton, "#151C2B", Color.FromRgb(243, 246, 251));
     }
 
     private async void InstallButton_OnClick(object sender, RoutedEventArgs e)
@@ -36,7 +34,7 @@ public partial class MainWindow : Window
             await source.CopyToAsync(target).ConfigureAwait(true);
             Progress.Value = 100;
 
-            StatusText.Text = "Kurulum tamam. Masaüstünde \"Tondy Pc Doctor.exe\" hazır.";
+            StatusText.Text = "Kurulum tamam.";
             InstallButton.Content = "Çalıştır";
             InstallButton.IsEnabled = true;
             InstallButton.Click -= InstallButton_OnClick;
@@ -60,11 +58,11 @@ public partial class MainWindow : Window
 
     private void CloseButton_OnClick(object sender, RoutedEventArgs e) => Close();
 
-    private static void StyleButton(System.Windows.Controls.Button button, string background, Color foreground)
+    private void TitleBar_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        button.Background = (Brush)new BrushConverter().ConvertFromString(background)!;
-        button.Foreground = new SolidColorBrush(foreground);
-        button.BorderThickness = new Thickness(0);
-        button.Cursor = System.Windows.Input.Cursors.Hand;
+        if (e.ButtonState == MouseButtonState.Pressed)
+        {
+            DragMove();
+        }
     }
 }

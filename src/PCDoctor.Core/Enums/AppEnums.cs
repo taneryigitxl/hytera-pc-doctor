@@ -44,7 +44,8 @@ public enum AppSection
     Security,
     Overlay,
     Reports,
-    Settings
+    Settings,
+    About
 }
 
 public enum LogLevel

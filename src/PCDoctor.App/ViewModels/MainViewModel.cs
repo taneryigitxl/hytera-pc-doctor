@@ -23,6 +23,7 @@ public sealed class MainViewModel : ObservableObject
         OverlaySettingsViewModel overlay,
         ReportsViewModel reports,
         SettingsViewModel settings,
+        AboutViewModel about,
         ILocalizationService localization)
     {
         _loc = localization;
@@ -37,6 +38,7 @@ public sealed class MainViewModel : ObservableObject
         Overlay = overlay;
         Reports = reports;
         Settings = settings;
+        About = about;
 
         Navigation =
         [
@@ -50,7 +52,8 @@ public sealed class MainViewModel : ObservableObject
             new NavigationItem(AppSection.Security, localization["Nav.Security"], "\uE72E"),
             new NavigationItem(AppSection.Overlay, localization["Nav.Overlay"], "\uE9D9"),
             new NavigationItem(AppSection.Reports, localization["Nav.Reports"], "\uE9F9"),
-            new NavigationItem(AppSection.Settings, localization["Nav.Settings"], "\uE713")
+            new NavigationItem(AppSection.Settings, localization["Nav.Settings"], "\uE713"),
+            new NavigationItem(AppSection.About, localization["Nav.About"], "\uE946")
         ];
 
         _statusText = localization["Common.Ready"];
@@ -72,6 +75,7 @@ public sealed class MainViewModel : ObservableObject
     public OverlaySettingsViewModel Overlay { get; }
     public ReportsViewModel Reports { get; }
     public SettingsViewModel Settings { get; }
+    public AboutViewModel About { get; }
 
     public NavigationItem SelectedNavigation
     {
@@ -120,6 +124,7 @@ public sealed class MainViewModel : ObservableObject
         AppSection.Overlay => "Nav.Overlay",
         AppSection.Reports => "Nav.Reports",
         AppSection.Settings => "Nav.Settings",
+        AppSection.About => "Nav.About",
         _ => "Nav.Dashboard"
     };
 
@@ -156,6 +161,16 @@ public sealed class MainViewModel : ObservableObject
         AppSection.Overlay => Overlay,
         AppSection.Reports => Reports,
         AppSection.Settings => Settings,
+        AppSection.About => About,
         _ => Dashboard
     };
+
+    public void NavigateTo(AppSection section)
+    {
+        var item = Navigation.FirstOrDefault(entry => entry.Section == section);
+        if (item is not null)
+        {
+            SelectedNavigation = item;
+        }
+    }
 }

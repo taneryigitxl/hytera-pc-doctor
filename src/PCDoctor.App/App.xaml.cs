@@ -49,12 +49,19 @@ public partial class App : Application
             overlaySettings,
             new ReportsViewModel(runtime.Reports, _localization),
             new SettingsViewModel(theme, runtime.Privileges, runtime.Logger, _localization),
+            new AboutViewModel(_localization),
             _localization);
 
         _mainWindow = new MainWindow { DataContext = main };
         _mainWindow.Closing += OnMainWindowClosing;
         _tray = new TrayIconService(_localization, RestoreMainWindow, ExitApplication);
         _mainWindow.Show();
+        if (e.Args.FirstOrDefault(argument => argument.StartsWith("--section=", StringComparison.OrdinalIgnoreCase)) is { } sectionArg
+            && Enum.TryParse<PCDoctor.Core.Enums.AppSection>(sectionArg["--section=".Length..], true, out var section))
+        {
+            main.NavigateTo(section);
+        }
+
         _overlay.Apply();
         base.OnStartup(e);
     }

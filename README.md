@@ -9,12 +9,30 @@ Windows tanı ve sorun giderme uygulaması. IT teknisyenleri ve son kullanıcıl
 Kurulum dosyası GitHub Releases üzerinden yayınlanır. Kaynak kod bu depodadır; `setup.exe` git geçmişine gömülmez.
 
 1. [Latest release](https://github.com/taneryigitxl/tondy-pc-doctor/releases/latest) sayfasını aç
-2. **[TondyPcDoctor-Setup.exe](https://github.com/taneryigitxl/tondy-pc-doctor/releases/download/v1.3.1/TondyPcDoctor-Setup.exe)** dosyasını indir
+2. **[TondyPcDoctor-Setup.exe](https://github.com/taneryigitxl/tondy-pc-doctor/releases/download/v1.4.0/TondyPcDoctor-Setup.exe)** dosyasını indir
 3. Kur’a bas — uygulama masaüstüne `Tondy Pc Doctor.exe` olarak kopyalanır
 
 Windows SmartScreen imzasız exe’lerde uyarı gösterebilir. Kaynak bu depo ise ve hash eşleşiyorsa dosya bizim paketimizdir.
 
-SHA256 (v1.3.1): `E2FADF7D9A84F14A386B39A537BE72C5AC95BCD08977CED609089309C9603EEA`
+SHA256 (v1.4.0): `33FE9F05E36035455660AF308BE2BD7D6896FA8A8697CD1D5C42B381F10A0CDD`
+
+## Görünüm
+
+Kurulum:
+
+![Tondy Pc Doctor kurulum](docs/screenshots/setup.png)
+
+Özet:
+
+![Tondy Pc Doctor özet](docs/screenshots/dashboard.png)
+
+Gösterge:
+
+![Tondy Pc Doctor gösterge](docs/screenshots/overlay.png)
+
+Hakkında:
+
+![Tondy Pc Doctor hakkında](docs/screenshots/about.png)
 
 ## Features
 
@@ -27,7 +45,8 @@ SHA256 (v1.3.1): `E2FADF7D9A84F14A386B39A537BE72C5AC95BCD08977CED609089309C9603E
 - **Başlangıç** — Run anahtarları ve başlangıç klasörü; etkinleştir / devre dışı bırak
 - **Güvenlik** — Windows Defender ve Güvenlik Duvarı profilleri
 - **Gösterge** — Afterburner tarzı köşe overlay; aç/kapa ve CPU/GPU/RAM/disk ölçümlerini tek tek seç
-- **Ayarlar** — koyu/açık tema, Türkçe/İngilizce, overlay kısayolu
+- **Ayarlar** — koyu/açık tema, Türkçe/İngilizce
+- **Hakkında** — site, GitHub ve LinkedIn bağlantıları
 
 Bulgular **Tamam / Uyarı / Kritik** olarak ölçülen değerlerden sınıflanır.
 

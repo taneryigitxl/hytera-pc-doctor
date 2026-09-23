@@ -9,7 +9,7 @@
     <ApplicationTitle>Tondy Pc Doctor Kurulum</ApplicationTitle>
     <Product>Tondy Pc Doctor</Product>
     <Company>Tondy</Company>
-    <Version>1.3.1</Version>
+    <Version>1.4.0</Version>
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
